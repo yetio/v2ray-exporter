@@ -228,6 +228,7 @@ For users who do not really care about the internal changes, but only need a map
 
 ## Special Thanks
 
+- <https://github.com/wi1dcard/v2ray-exporter>
 - <https://github.com/schweikert/fping-exporter>
 - <https://github.com/oliver006/redis_exporter>
 - <https://github.com/roboll/helmfile>

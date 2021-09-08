@@ -4,7 +4,7 @@ metadata:
   name: v2ray-exporter
 build:
   artifacts:
-    - image: wi1dcard/v2ray-exporter
+    - image: yetio/v2ray-exporter
       docker:
         buildArgs:
           ARCH: amd64

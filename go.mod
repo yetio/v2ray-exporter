@@ -1,4 +1,4 @@
-module github.com/wi1dcard/v2ray-exporter
+module github.com/yetio/v2ray-exporter
 
 go 1.15
 

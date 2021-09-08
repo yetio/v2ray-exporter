@@ -5,7 +5,7 @@ COMMIT        = $(shell git rev-parse --short HEAD)
 FULL_COMMIT   = $(shell git rev-parse HEAD)
 RELEASE_NOTES = `git log ${LAST_TAG}..HEAD --oneline --decorate`
 DATE          = $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
-DOCKER_REPO   = wi1dcard/v2ray-exporter
+DOCKER_REPO   = yetio/v2ray-exporter
 
 export DOCKER_CLI_EXPERIMENTAL=enabled
 
@@ -25,24 +25,26 @@ dev:
 	skaffold dev --port-forward --no-prune=false
 
 build: check_tag
-	gox -verbose \
+	env GOMIPS=softfloat gox -verbose \
 	    -output "dist/{{.Dir}}_{{.OS}}_{{.Arch}}" \
-	    -osarch "linux/amd64 linux/arm64 linux/arm darwin/amd64 windows/amd64" \
+	    -osarch "linux/mipsle linux/amd64 linux/arm64 linux/arm darwin/amd64 windows/amd64" \
 	    -ldflags "-X main.buildCommit=${COMMIT} \
 	              -X main.buildDate=${DATE} \
 	              -X main.buildVersion=${TAG}" \
 	    ./...
 
 release: build
-	@ghr -u wi1dcard -b "${RELEASE_NOTES}" -c "${FULL_COMMIT}" "${TAG}" dist/
+	@ghr -u yetio -b "${RELEASE_NOTES}" -c "${FULL_COMMIT}" "${TAG}" dist/
 
 docker_build: build
+	docker build --build-arg ARCH=mipsel -t "${DOCKER_REPO}:${TAG}-mipsel" .
 	docker build --build-arg ARCH=amd64 -t "${DOCKER_REPO}:${TAG}-amd64" .
 	docker build --build-arg ARCH=arm64 -t "${DOCKER_REPO}:${TAG}-arm64" .
 	docker build --build-arg ARCH=arm -t "${DOCKER_REPO}:${TAG}-arm" .
 
 docker_push: check_tag
 	docker push "${DOCKER_REPO}:${TAG}-amd64"
+	docker push "${DOCKER_REPO}:${TAG}-mipsel"
 	docker push "${DOCKER_REPO}:${TAG}-arm64"
 	docker push "${DOCKER_REPO}:${TAG}-arm"
 
