@@ -1,7 +1,7 @@
 # V2Ray Exporter
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/wi1dcard/v2ray-exporter)][goreportcard]
-[![Build Status](https://travis-ci.com/wi1dcard/v2ray-exporter.svg?branch=master)][build-status]
+[![Go Report Card](https://goreportcard.com/badge/github.com/yetio/v2ray-exporter)][goreportcard]
+[![Build Status](https://travis-ci.com/yetio/v2ray-exporter.svg?branch=master)][build-status]
 
 An exporter that collect V2Ray metrics over its [Stats API][stats-api] and export them to Prometheus.
 
@@ -20,9 +20,9 @@ An exporter that collect V2Ray metrics over its [Stats API][stats-api] and expor
 ![][grafana-screenshot]
 
 [stats-api]: https://www.v2ray.com/chapter_02/stats.html
-[goreportcard]: https://goreportcard.com/report/github.com/wi1dcard/v2ray-exporter
+[goreportcard]: https://goreportcard.com/report/github.com/yetio/v2ray-exporter
 [grafana-screenshot]: https://i.loli.net/2020/06/12/KzjOnyu93VEIPiW.png
-[build-status]: https://travis-ci.com/wi1dcard/v2ray-exporter
+[build-status]: https://travis-ci.com/yetio/v2ray-exporter
 
 ## Quick Start
 
@@ -31,7 +31,7 @@ An exporter that collect V2Ray metrics over its [Stats API][stats-api] and expor
 The latest binaries are made available on GitHub [releases][github-releases] page:
 
 ```bash
-wget -O /tmp/v2ray-exporter https://github.com/wi1dcard/v2ray-exporter/releases/latest/download/v2ray-exporter_linux_amd64
+wget -O /tmp/v2ray-exporter https://github.com/yetio/v2ray-exporter/releases/latest/download/v2ray-exporter_linux_amd64
 mv /tmp/v2ray-exporter /usr/local/bin/v2ray-exporter
 chmod +x /usr/local/bin/v2ray-exporter
 ```
@@ -237,11 +237,11 @@ For users who do not really care about the internal changes, but only need a map
 
 MIT
 
-[github-releases]: https://github.com/wi1dcard/v2ray-exporter/releases
+[github-releases]: https://github.com/yetio/v2ray-exporter/releases
 [v2ray-beginners-guide]: https://guide.v2fly.org/en_US/advanced/traffic.html
 [browser-screenshot]: https://i.loli.net/2020/01/11/ZVtNEU8iqMrFGKm.png
 [prometheus-docs]: https://prometheus.io/docs/prometheus/latest/configuration/configuration/
 [grafana-dashboard]: ./dashboard.json
 [grafana-dashboard-grafana-dot-com]: https://grafana.com/grafana/dashboards/11545
 [grafana-importing-dashboard]: https://grafana.com/docs/grafana/latest/reference/export_import/#importing-a-dashboard
-[explaination-of-metric-names]: https://github.com/wi1dcard/v2ray-exporter/blob/110e82dfefb1b51f4da3966ddd1945b5d0dac203/exporter.go#L134
+[explaination-of-metric-names]: https://github.com/yetio/v2ray-exporter/blob/110e82dfefb1b51f4da3966ddd1945b5d0dac203/exporter.go#L134
